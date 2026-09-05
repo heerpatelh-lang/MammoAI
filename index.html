@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MammoAI — Detecting Hope Early | Educational Risk Assessment Prototype</title>
+  <meta name="description" content="An educational AI-assisted mammogram risk assessment prototype designed to help users understand screening indicators, clarify medical terminology, and prepare for doctor conversations.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 1. Persistent Medical Safety Disclaimer Banner -->
+  <aside class="safety-disclaimer-banner" role="alert" aria-label="Medical Disclaimer">
+    <strong>Educational Prototype Notice:</strong> MammoAI is an educational prototype, not a diagnostic medical device. Its assessment is based solely on entered demonstration indicators and cannot determine whether cancer is present. Always discuss mammogram findings with a qualified healthcare professional.
+  </aside>
+
+  <!-- 2. Global Navigation Header -->
+  <header class="main-header" role="banner">
+    <nav class="nav-container" aria-label="Main Navigation">
+      <a class="brand-logo" data-navigate="home" href="#home" id="nav-brand-logo">
+        <div class="brand-logo-icon">✦</div>
+        <div class="brand-text-block">
+          <span class="brand-title">MammoAI</span>
+          <span class="brand-tagline">Detecting Hope Early</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links-desktop">
+        <li><a class="nav-link active" data-navigate="home" href="#home" id="nav-home">Home</a></li>
+        <li><a class="nav-link" data-navigate="assess" href="#assess" id="nav-assess">Assess</a></li>
+        <li><a class="nav-link" data-navigate="results" href="#results" id="nav-results">Results</a></li>
+        <li><a class="nav-link" data-navigate="ask" href="#ask" id="nav-ask">Ask MammoAI</a></li>
+        <li><a class="nav-link" data-navigate="learn" href="#learn" id="nav-learn">Learn</a></li>
+        <li><a class="nav-link" data-navigate="about" href="#about" id="nav-about">About</a></li>
+      </ul>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <button class="btn-demo-pill" id="toggle-demo-mode" title="Open Competition Demo Scenarios" aria-label="Demo Mode">
+          <span>⚡</span> Demo Mode
+        </button>
+        <button class="btn-primary-cta" data-navigate="assess" id="nav-cta-start">
+          Start Assessment →
+        </button>
+        <button class="hamburger-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          ☰
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-nav-drawer" id="mobile-nav">
+      <ul>
+        <li><a class="nav-link" data-navigate="home" href="#home">Home</a></li>
+        <li><a class="nav-link" data-navigate="assess" href="#assess">Assess</a></li>
+        <li><a class="nav-link" data-navigate="results" href="#results">Results</a></li>
+        <li><a class="nav-link" data-navigate="ask" href="#ask">Ask MammoAI</a></li>
+        <li><a class="nav-link" data-navigate="learn" href="#learn">Learn</a></li>
+        <li><a class="nav-link" data-navigate="about" href="#about">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Application Content Area (SPA Views) -->
+  <main class="app-main" id="main-content" role="main">
+
+    <!-- ====================================================================
+         VIEW 1: HOME PAGE
+         ==================================================================== -->
+    <section class="view-section active-view" id="view-home">
+      <!-- Hero Section -->
+      <div class="hero-section">
+        <div class="hero-content-col">
+          <span class="hero-tag">AI-Assisted Educational Prototype</span>
+          <h1 class="hero-title">MammoAI</h1>
+          <h2 class="hero-subtitle-lead">Detecting Hope Early</h2>
+          <p class="hero-description">
+            An AI-assisted mammogram risk assessment prototype designed to help users understand screening indicators, make sense of radiology terms, and recognize when medical follow-up may be appropriate.
+          </p>
+          <div class="hero-cta-group">
+            <button class="btn-primary" data-navigate="assess" id="hero-btn-start">
+              Start Assessment →
+            </button>
+            <button class="btn-secondary" data-navigate="home" id="hero-btn-how" onclick="document.getElementById('how-it-works-section').scrollIntoView({behavior: 'smooth'})">
+              How It Works
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero Clean Healthcare AI Flow Visualization -->
+        <div class="hero-visual-col">
+          <div class="hero-visual-card">
+            <div class="visual-header">
+              <span>Prototype Workflow</span>
+              <span style="color: var(--blush-accent);">AI + Healthcare</span>
+            </div>
+            <div class="visual-flow-list">
+              <div class="flow-step-item">
+                <div class="flow-step-num">1</div>
+                <div class="flow-step-content">
+                  <strong>User Inputs</strong>
+                  <span>Age, Lump, Density, Calcification</span>
+                </div>
+              </div>
+              <div class="flow-connector-arrow">↓</div>
+              <div class="flow-step-item">
+                <div class="flow-step-num">2</div>
+                <div class="flow-step-content">
+                  <strong>MammoAI Analysis</strong>
+                  <span>Transparent multi-factor rule model</span>
+                </div>
+              </div>
+              <div class="flow-connector-arrow">↓</div>
+              <div class="flow-step-item">
+                <div class="flow-step-num">3</div>
+                <div class="flow-step-content">
+                  <strong>Personalized Explanation</strong>
+                  <span>Clear factor-by-factor breakdown</span>
+                </div>
+              </div>
+              <div class="flow-connector-arrow">↓</div>
+              <div class="flow-step-item">
+                <div class="flow-step-num">4</div>
+                <div class="flow-step-content">
+                  <strong>Next Step</strong>
+                  <span>Empowered questions for your doctor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Message Section -->
+      <section class="trust-banner-section">
+        <h3>Early understanding can lead to better conversations.</h3>
+        <p>
+          MammoAI is designed to make screening information easier to understand while encouraging appropriate professional follow-up. We never claim to diagnose conditions or replace clinical evaluations—our goal is to make healthcare conversations transparent and empowering.
+        </p>
+      </section>
+
+      <!-- How It Works (4 Cards) -->
+      <section class="how-it-works-container" id="how-it-works-section">
+        <div class="section-header">
+          <span class="section-tag">Methodology</span>
+          <h2 class="section-title">How It Works</h2>
+        </div>
+        <div class="how-it-works-grid">
+          <div class="how-card">
+            <span class="how-card-num">01</span>
+            <h4>Enter</h4>
+            <p>Select four simplified mammogram indicators: age band, lump/mass, tissue density, and calcification status.</p>
+          </div>
+          <div class="how-card">
+            <span class="how-card-num">02</span>
+            <h4>Analyze</h4>
+            <p>MammoAI combines your indicators using a transparent demonstration risk-assessment model.</p>
+          </div>
+          <div class="how-card">
+            <span class="how-card-num">03</span>
+            <h4>Explain</h4>
+            <p>Review exactly which factors influenced your educational categorization and why.</p>
+          </div>
+          <div class="how-card">
+            <span class="how-card-num">04</span>
+            <h4>Act</h4>
+            <p>Receive tailored next-step recommendations and generate actionable questions for your doctor.</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-bottom: 64px;">
+          <button class="btn-primary" data-navigate="assess">Try MammoAI →</button>
+        </div>
+      </section>
+
+      <!-- Key Features (6 Cards) -->
+      <section class="key-features-container">
+        <div class="section-header">
+          <span class="section-tag">Prototype Capabilities</span>
+          <h2 class="section-title">Designed for Understanding</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="feature-card-icon">🔍</span>
+            <h4>AI Assessment</h4>
+            <p>A transparent, indicator-based prototype assessment showing non-diagnostic concern levels.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-card-icon">✨</span>
+            <h4>Explain My Result</h4>
+            <p>Dynamic, factor-by-factor insights explaining why your indicators produced your assessment.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-card-icon">🤖</span>
+            <h4>MammoAI Companion</h4>
+            <p>An educational assistant equipped with strict medical safety filters to answer terminology questions.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-card-icon">📚</span>
+            <h4>Learn</h4>
+            <p>Demystify complex radiology terms like tissue density, microcalcifications, and BI-RADS scores.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-card-icon">📋</span>
+            <h4>Doctor Question Generator</h4>
+            <p>Generate prioritized, practical questions to take directly to your next healthcare appointment.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-card-icon">🧠</span>
+            <h4>Transparent AI</h4>
+            <p>Open-box design showcasing the exact rule-based logic and weights used in the student model.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ====================================================================
+         VIEW 2: ASSESSMENT PAGE (Multi-Step Wizard)
+         ==================================================================== -->
+    <section class="view-section" id="view-assess">
+      <div class="assessment-container">
+        <div class="assessment-header">
+          <h2>Educational Risk Assessment</h2>
+          <p>Please enter the four indicators documented in your screening report or consultation.</p>
+        </div>
+
+        <!-- 4-Step Progress Indicator Bar -->
+        <div class="steps-progress-bar" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1">
+          <div class="step-indicator-item active" id="step-indicator-1">
+            <span class="step-pill-number">1</span>
+            <span>Age</span>
+          </div>
+          <span class="step-separator">→</span>
+          <div class="step-indicator-item" id="step-indicator-2">
+            <span class="step-pill-number">2</span>
+            <span>Lump</span>
+          </div>
+          <span class="step-separator">→</span>
+          <div class="step-indicator-item" id="step-indicator-3">
+            <span class="step-pill-number">3</span>
+            <span>Density</span>
+          </div>
+          <span class="step-separator">→</span>
+          <div class="step-indicator-item" id="step-indicator-4">
+            <span class="step-pill-number">4</span>
+            <span>Calcification</span>
+          </div>
+        </div>
+
+        <!-- Step 1: Age Category -->
+        <div class="assessment-step-card" id="step-card-1">
+          <div class="question-header-row">
+            <h3 class="question-title">What is your age category?</h3>
+            <button class="btn-question-info" data-info-topic="ageCategory" type="button" aria-label="Why does age matter info">
+              ⓘ Why does age matter?
+            </button>
+          </div>
+          <p class="question-subtext">Exact age is not required. Select your general age bracket.</p>
+          <div class="step-options-grid">
+            <button class="indicator-option" data-step-key="ageCategory" data-value="Under 40">
+              <span>Under 40</span>
+              <span class="indicator-option-hint">Below routine screening baseline</span>
+            </button>
+            <button class="indicator-option" data-step-key="ageCategory" data-value="40–49">
+              <span>40–49</span>
+              <span class="indicator-option-hint">Screening initiation window</span>
+            </button>
+            <button class="indicator-option" data-step-key="ageCategory" data-value="50–59">
+              <span>50–59</span>
+              <span class="indicator-option-hint">Standard regular screening bracket</span>
+            </button>
+            <button class="indicator-option" data-step-key="ageCategory" data-value="60+">
+              <span>60+</span>
+              <span class="indicator-option-hint">Higher demographic incidence bracket</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Lump / Mass -->
+        <div class="assessment-step-card" id="step-card-2" style="display: none;">
+          <div class="question-header-row">
+            <h3 class="question-title">Was a lump or mass mentioned in the report?</h3>
+            <button class="btn-question-info" data-info-topic="lump" type="button" aria-label="What does lump or mass mean info">
+              ⓘ What does lump/mass mean?
+            </button>
+          </div>
+          <p class="question-subtext">Refers to palpable findings or discrete masses described by the radiologist.</p>
+          <div class="step-options-grid">
+            <button class="indicator-option" data-step-key="lump" data-value="No">
+              <span>No</span>
+              <span class="indicator-option-hint">No masses or palpable lumps noted</span>
+            </button>
+            <button class="indicator-option" data-step-key="lump" data-value="Yes">
+              <span>Yes</span>
+              <span class="indicator-option-hint">Lump or focal mass was reported</span>
+            </button>
+            <button class="indicator-option" data-step-key="lump" data-value="Unclear / Not reported">
+              <span>Unclear / Not reported</span>
+              <span class="indicator-option-hint">Not specified in available records</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Breast Tissue Density -->
+        <div class="assessment-step-card" id="step-card-3" style="display: none;">
+          <div class="question-header-row">
+            <h3 class="question-title">What breast tissue density was reported?</h3>
+            <button class="btn-question-info" data-info-topic="density" type="button" aria-label="What is breast density info">
+              ⓘ What is breast density?
+            </button>
+          </div>
+          <p class="question-subtext">Density describes the proportion of glandular and fibrous tissue on your mammogram.</p>
+          <div class="step-options-grid">
+            <button class="indicator-option" data-step-key="density" data-value="Low / fatty">
+              <span>Low / fatty</span>
+              <span class="indicator-option-hint">Almost entirely fatty tissue (high transparency)</span>
+            </button>
+            <button class="indicator-option" data-step-key="density" data-value="Scattered">
+              <span>Scattered</span>
+              <span class="indicator-option-hint">Scattered fibroglandular densities</span>
+            </button>
+            <button class="indicator-option" data-step-key="density" data-value="Heterogeneously dense">
+              <span>Heterogeneously dense</span>
+              <span class="indicator-option-hint">Dense tissue that may obscure small findings</span>
+            </button>
+            <button class="indicator-option" data-step-key="density" data-value="Extremely dense">
+              <span>Extremely dense</span>
+              <span class="indicator-option-hint">Very dense; substantially reduces sensitivity</span>
+            </button>
+            <button class="indicator-option" data-step-key="density" data-value="Not reported">
+              <span>Not reported</span>
+              <span class="indicator-option-hint">Density category not stated in report</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 4: Calcifications -->
+        <div class="assessment-step-card" id="step-card-4" style="display: none;">
+          <div class="question-header-row">
+            <h3 class="question-title">Were calcifications mentioned?</h3>
+            <button class="btn-question-info" data-info-topic="calcification" type="button" aria-label="What are calcifications info">
+              ⓘ What are calcifications?
+            </button>
+          </div>
+          <p class="question-subtext">Tiny calcium deposits visible on mammograms. Most are completely benign.</p>
+          <div class="step-options-grid">
+            <button class="indicator-option" data-step-key="calcification" data-value="No">
+              <span>No</span>
+              <span class="indicator-option-hint">No calcifications identified</span>
+            </button>
+            <button class="indicator-option" data-step-key="calcification" data-value="Yes">
+              <span>Yes</span>
+              <span class="indicator-option-hint">Macro or microcalcifications noted</span>
+            </button>
+            <button class="indicator-option" data-step-key="calcification" data-value="Unclear / Not reported">
+              <span>Unclear / Not reported</span>
+              <span class="indicator-option-hint">Not mentioned or verified in records</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Form Step Navigation -->
+        <div class="step-nav-row">
+          <button class="btn-secondary" id="btn-step-back" type="button" style="visibility: hidden;">
+            ← Back
+          </button>
+          <button class="btn-primary" id="btn-step-next" type="button" disabled>
+            Continue →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW 3: ANALYSIS SCREEN (Sequential Animation)
+         ==================================================================== -->
+    <section class="view-section" id="view-analyzing">
+      <div class="analysis-animation-container">
+        <div class="spinner-icon"></div>
+        <h3 style="font-size: 1.4rem; color: var(--plum-primary); margin-bottom: 24px;">
+          Processing Indicators
+        </h3>
+        <div class="analysis-status-list">
+          <div class="analysis-phase-item" id="analysis-phase-1">
+            <span class="phase-dot"></span>
+            <span>Analyzing your indicators...</span>
+          </div>
+          <div class="analysis-phase-item" id="analysis-phase-2">
+            <span class="phase-dot"></span>
+            <span>Comparing selected factors...</span>
+          </div>
+          <div class="analysis-phase-item" id="analysis-phase-3">
+            <span class="phase-dot"></span>
+            <span>Generating your assessment...</span>
+          </div>
+          <div class="analysis-phase-item" id="analysis-phase-4">
+            <span class="phase-dot"></span>
+            <span>Creating your personalized explanation...</span>
+          </div>
+          <div class="analysis-phase-item" id="analysis-phase-final">
+            <span class="phase-dot"></span>
+            <span>Assessment Complete ✓</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW 4: RESULTS PAGE & EXPLAIN MY RESULT
+         ==================================================================== -->
+    <section class="view-section" id="view-results">
+      <div class="results-container">
+
+        <!-- Empty State if user lands on Results without taking assessment -->
+        <div id="results-empty-state" style="text-align: center; padding: 48px 0; display: none;">
+          <h3 style="font-size: 1.6rem; color: var(--plum-primary); margin-bottom: 12px;">No Assessment Completed Yet</h3>
+          <p style="color: var(--text-muted); margin-bottom: 24px;">Please complete the four quick indicators or load a demonstration scenario to view an assessment.</p>
+          <button class="btn-primary" data-navigate="assess">Start Assessment →</button>
+        </div>
+
+        <div id="results-content">
+          <div class="results-header">
+            <h2>MammoAI Assessment Complete</h2>
+            <p>Your educational indicator evaluation and transparent factor breakdown.</p>
+          </div>
+
+          <!-- Main Result Concern Card -->
+          <div class="result-card-main">
+            <h3>Demonstration Level of Concern</h3>
+            <div id="result-category-badge" class="concern-badge badge-moderate">
+              <span class="badge-icon">🟡</span>
+              <span class="badge-label">Moderate Concern</span>
+            </div>
+            <p class="result-non-prob-note">
+              Prototype educational risk categorization • Not a clinical diagnosis • No fake probability
+            </p>
+          </div>
+
+          <!-- Factors Considered Summary Cards -->
+          <div class="factors-summary-section">
+            <h4>Factors Considered in Model</h4>
+            <div class="factors-grid-cards" id="result-factors-grid">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+
+          <!-- ✨ Explain My Result Section -->
+          <div class="explain-result-box" id="explain-section">
+            <div class="explain-box-header">
+              <span style="font-size: 1.6rem;">✨</span>
+              <h3>Why did I get this result?</h3>
+            </div>
+            <div class="dynamic-explanation-lead" id="dynamic-explanation-text">
+              <!-- Dynamically generated personalized paragraph -->
+            </div>
+
+            <h4 style="font-size: 1.15rem; color: var(--plum-primary); margin-bottom: 16px;">
+              Factor-by-Factor Influence Breakdown
+            </h4>
+            <div class="factor-breakdown-list" id="factor-breakdown-list">
+              <!-- Dynamically rendered factor bars -->
+            </div>
+            <p class="model-influence-disclaimer-tag">
+              * Prototype model influence bar visualization — demonstration weights only, not a clinically validated measurement.
+            </p>
+          </div>
+
+          <!-- Result Meaning & Next Steps Guidance -->
+          <div class="results-guidance-grid">
+            <div class="guidance-card">
+              <h4>What does this result mean?</h4>
+              <p id="result-meaning-body">
+                <!-- Dynamically populated -->
+              </p>
+            </div>
+            <div class="guidance-card">
+              <h4 id="recommended-action-title">What should I do next?</h4>
+              <p id="recommended-action-desc" style="font-weight: 600; color: var(--plum-primary);">
+                <!-- Dynamically populated -->
+              </p>
+              <ul id="recommended-action-steps">
+                <!-- Dynamically populated -->
+              </ul>
+            </div>
+          </div>
+
+          <!-- Doctor Questions Generator -->
+          <div class="doctor-questions-container">
+            <div class="doctor-questions-header">
+              <div>
+                <h3>📋 Questions for Your Doctor</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">
+                  Tailored to your specific assessment indicators.
+                </p>
+              </div>
+              <button class="btn-secondary" id="btn-copy-questions" type="button">
+                📋 Copy Questions
+              </button>
+            </div>
+            <ul class="doctor-questions-list" id="doctor-questions-list">
+              <!-- Populated dynamically -->
+            </ul>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <button class="btn-primary" data-navigate="ask">
+                💬 Discuss Result with MammoAI Companion →
+              </button>
+              <button class="btn-secondary" data-navigate="learn">
+                📚 Explore Recommended Learning →
+              </button>
+            </div>
+          </div>
+
+          <!-- Transparent AI Section (Expandable) -->
+          <div class="transparent-ai-wrapper">
+            <button class="btn-toggle-ai-logic" id="btn-toggle-ai-logic" type="button">
+              <span>🧠 How did MammoAI reach this result?</span>
+              <span class="arrow">↓</span>
+            </button>
+            <div class="transparent-ai-details" id="transparent-ai-logic-details" style="display: none;">
+              <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 14px;">
+                MammoAI operates as an <strong>open-box, rule-based demonstration system</strong>. Here is the exact pipeline that processed your indicators:
+              </p>
+              <div class="ai-logic-tree">
+User Inputs (Age, Lump, Density, Calcification)
+      ↓
+Indicator Normalization & Weights Lookup
+      ↓
+Rule-Based Demonstration Model (Summation)
+      ↓
+Concern Categorization Thresholds (<2.4: Lower, 2.5-5.4: Moderate, >5.4: Higher)
+      ↓
+Dynamic Natural Language Explanation Generator
+      ↓
+Personalized Next-Step & Doctor Question Generator</div>
+              <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
+                <strong>Notice for judges & educators:</strong> The demonstration weights are configured in centralized configuration (`MODEL_CONFIG.weights`). Indicators marked as <em>Unclear / Not reported</em> are never assumed to be negative or positive; they are explicitly flagged for clarification. This model is purely educational and has not been clinically validated.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW 5: ASK MAMMOAI (AI Companion Chatbot)
+         ==================================================================== -->
+    <section class="view-section" id="view-ask">
+      <div class="chatbot-page-container">
+        <div class="assessment-header">
+          <h2>Ask MammoAI Companion</h2>
+          <p>Ask questions and understand mammogram-related terminology in simple language.</p>
+        </div>
+
+        <div class="chatbot-wrapper">
+          <div class="chatbot-header">
+            <div class="chatbot-header-info">
+              <div class="chatbot-avatar">🤖</div>
+              <div>
+                <h3>MammoAI Companion</h3>
+                <span>Educational Healthcare Assistant</span>
+              </div>
+            </div>
+            <div class="chatbot-safety-badge">🛡️ Medically Guardrailed</div>
+          </div>
+
+          <!-- Scrollable Message Stream -->
+          <div class="chat-messages-scroll" id="chat-messages" role="log" aria-live="polite">
+            <!-- Messages rendered dynamically -->
+          </div>
+
+          <!-- Quick Suggestion Prompt Pills -->
+          <div class="chat-suggestions-row">
+            <button class="prompt-pill" data-prompt="Why did I get my assessment result?">Why did I get my result?</button>
+            <button class="prompt-pill" data-prompt="What is breast tissue density?">What is breast density?</button>
+            <button class="prompt-pill" data-prompt="What are calcifications?">What are calcifications?</button>
+            <button class="prompt-pill" data-prompt="What questions should I ask my doctor?">Questions for my doctor</button>
+            <button class="prompt-pill" data-prompt="What does a lump usually mean?">What does a lump mean?</button>
+            <button class="prompt-pill" data-prompt="Do I have cancer?">Do I have cancer? (Safety test)</button>
+          </div>
+
+          <!-- Input Bar -->
+          <form class="chat-input-bar" id="chat-form">
+            <input 
+              type="text" 
+              class="chat-input-field" 
+              id="chat-input" 
+              placeholder="Ask an educational question about mammograms or your assessment..."
+              autocomplete="off"
+            >
+            <button type="submit" class="btn-primary" style="padding: 10px 22px;">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW 6: LEARN PAGE, QUIZ, FOLLOW-UP TRACKER
+         ==================================================================== -->
+    <section class="view-section" id="view-learn">
+      <div class="learn-container">
+        <div class="learn-header">
+          <h2>Learn About Mammograms</h2>
+          <p>Clear, accessible guides to help you understand breast screening and medical findings.</p>
+        </div>
+
+        <!-- Search the library -->
+        <div class="library-search-wrapper">
+          <input 
+            type="search" 
+            class="library-search-input" 
+            id="library-search-input" 
+            placeholder="Search educational topics (e.g. density, calcification, lump)..."
+          >
+        </div>
+
+        <!-- Personalized Recommendations -->
+        <section class="recommended-section" id="recommended-section">
+          <div id="recommended-articles-wrapper">
+            <!-- Populated dynamically based on assessment -->
+          </div>
+        </section>
+
+        <!-- Educational Library Cards Grid -->
+        <div class="section-header" style="text-align: left; margin-bottom: 24px;">
+          <h3 style="font-size: 1.5rem; color: var(--plum-primary);">Educational Library</h3>
+        </div>
+        <div class="articles-grid" id="learning-articles-grid">
+          <!-- Dynamically populated from EDUCATIONAL_ARTICLES -->
+        </div>
+
+        <!-- Interactive Myth vs Fact Quiz -->
+        <section class="quiz-section-wrapper">
+          <div class="section-header">
+            <span class="section-tag">Interactive Knowledge Check</span>
+            <h3 style="font-size: 1.8rem; color: var(--plum-primary);">Myth or Fact?</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Test your understanding of common mammogram and breast screening misconceptions.
+            </p>
+          </div>
+          <div id="myth-fact-box">
+            <!-- Populated dynamically -->
+          </div>
+        </section>
+
+        <!-- Optional Follow-Up Tracker -->
+        <section class="checklist-section-wrapper">
+          <h3>📋 My Screening Follow-Up Checklist</h3>
+          <p>An optional self-care guide to help you organize your records and discussions. Stored locally in your browser.</p>
+          <div class="checklist-items-grid">
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-key="reviewReport">
+              <span>Review my written mammogram report and check for BI-RADS score and density notice</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-key="discussDoctor">
+              <span>Discuss findings and any questions with my healthcare professional</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-key="prepQuestions">
+              <span>Prepare specific questions about density or recommendations prior to my appointment</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-key="followSchedule">
+              <span>Follow my doctor's recommendations for routine or diagnostic follow-up scheduling</span>
+            </label>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW 7: ABOUT PAGE & PRIVACY
+         ==================================================================== -->
+    <section class="view-section" id="view-about">
+      <div class="about-container">
+        <div class="about-header">
+          <h2>About MammoAI</h2>
+          <p>Promoting early understanding and responsible AI in healthcare education.</p>
+        </div>
+
+        <div class="about-card-section">
+          <h3>Our Mission</h3>
+          <p>
+            Breast screening can feel intimidating, filled with dense medical jargon and ambiguous reports. MammoAI was built to make mammogram-related information easier to understand through transparent, responsible AI-assisted technology.
+          </p>
+          <p>
+            Our core philosophy: <strong>MammoAI doesn't just give a result. It helps users understand it and know what to do next.</strong>
+          </p>
+        </div>
+
+        <div class="about-card-section">
+          <h3>Why Explainability Matters</h3>
+          <p>
+            In modern healthcare AI, a "black-box" prediction that simply outputs a percentage creates anxiety rather than empowerment. Explainability transforms algorithms into educational partners: users deserve to see which specific factors influenced a model, what those factors mean clinically, and how to verify them with a qualified physician.
+          </p>
+        </div>
+
+        <div class="about-card-section">
+          <h3>Prototype Limitations & Safety</h3>
+          <p>
+            MammoAI is a student educational prototype and adheres to strict medical boundaries:
+          </p>
+          <ul>
+            <li>It is NOT a medical device and is NOT clinically validated.</li>
+            <li>It cannot determine whether cancer is present or absent.</li>
+            <li>It does NOT provide actual cancer probabilities or prescribe treatments.</li>
+            <li>Missing or unclear report indicators are never treated as negative confirmations.</li>
+          </ul>
+        </div>
+
+        <div class="about-card-section">
+          <h3>Privacy & Data Control</h3>
+          <p>
+            MammoAI values privacy. We do not require accounts, logins, emails, names, or patient IDs. All assessment information is kept in your private browser session.
+          </p>
+          <div style="margin-top: 20px;">
+            <button class="btn-secondary" id="btn-clear-assessment">
+              🗑️ Clear My Assessment Data
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       MODALS & OVERLAYS
+       ==================================================================== -->
+
+  <!-- Educational Info Dialog (Tooltip Modal) -->
+  <div class="modal-overlay" id="info-modal" role="dialog" aria-modal="true" aria-labelledby="info-modal-title">
+    <div class="modal-content-box">
+      <div class="modal-header-row">
+        <h3 id="info-modal-title">Topic Title</h3>
+        <button class="btn-modal-close" id="info-modal-close" aria-label="Close dialog">✕</button>
+      </div>
+      <p class="modal-body-text" id="info-modal-body">
+        Modal explanation text.
+      </p>
+      <button class="btn-primary" onclick="document.getElementById('info-modal').classList.remove('active')" style="width: 100%;">
+        Got it, thank you
+      </button>
+    </div>
+  </div>
+
+  <!-- Competition Demonstration Scenarios Modal -->
+  <div class="modal-overlay" id="demo-scenarios-modal" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title">
+    <div class="modal-content-box" style="max-width: 580px;">
+      <div class="modal-header-row">
+        <h3 id="demo-modal-title">⚡ Competition Demonstration Scenarios</h3>
+        <button class="btn-modal-close" id="btn-close-demo-modal" aria-label="Close dialog">✕</button>
+      </div>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px;">
+        Designed for judges and reviewers to rapidly inspect how different indicator profiles trigger dynamic assessments, explanations, and tailored doctor questions.
+      </p>
+      <div class="demo-scenarios-grid">
+        <button class="demo-scenario-btn" data-demo-scenario="1">
+          <strong>Scenario 1 — Routine / Low Baseline</strong>
+          <span>Age 40–49 • No lump • Low/fatty density • No calcifications → 🟢 Lower Concern</span>
+        </button>
+        <button class="demo-scenario-btn" data-demo-scenario="2">
+          <strong>Scenario 2 — Dense Tissue & Calcifications</strong>
+          <span>Age 50–59 • No lump • Heterogeneously dense • Calcifications present → 🟡 Moderate Concern</span>
+        </button>
+        <button class="demo-scenario-btn" data-demo-scenario="3">
+          <strong>Scenario 3 — Lump & Extremely Dense Tissue</strong>
+          <span>Age 60+ • Reported lump • Extremely dense • Calcifications present → 🔴 Higher Concern</span>
+        </button>
+      </div>
+      <p style="font-size: 0.78rem; color: var(--text-subtle); text-align: center;">
+        * Demonstration scenarios for prototype review. Does not represent real patient records.
+      </p>
+    </div>
+  </div>
+
+  <!-- Toast Notification Alert -->
+  <div class="toast-notice" id="toast-notification" role="status" aria-live="polite"></div>
+
+  <!-- Global Footer -->
+  <footer class="main-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h4>MammoAI</h4>
+        <p>Detecting Hope Early • AI-Assisted Educational Risk Assessment</p>
+      </div>
+      <ul class="footer-links">
+        <li><a data-navigate="home" href="#home">Home</a></li>
+        <li><a data-navigate="assess" href="#assess">Assess</a></li>
+        <li><a data-navigate="learn" href="#learn">Learn</a></li>
+        <li><a data-navigate="ask" href="#ask">Ask MammoAI</a></li>
+        <li><a data-navigate="about" href="#about">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom-disclaimer">
+      MammoAI is an educational prototype and does not provide medical diagnosis, cancer probabilities, or treatment recommendations. Always discuss official mammogram reports with a qualified healthcare professional.
+    </div>
+  </footer>
+
+  <!-- Universal Application Script (Zero dependencies, offline & server ready) -->
+  <script src="js/main.js"></script>
+</body>
+</html>
